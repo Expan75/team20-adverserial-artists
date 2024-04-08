@@ -46,7 +46,14 @@ git clone git@github.com:Expan75/team20-adverserial-artists.git
 git clone https://github.com/Expan75/team20-adverserial-artists
 ```
 
-2. see notebooks/getting-started.ipynb
+2. Install dependencies
+
+```bash
+# create a virtualenv in project directory
+python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+```
+
+3. see notebooks/getting-started.ipynb
 
 ```bash
 python3 -m jupyter notebook notebooks/getting-started.ipynb
