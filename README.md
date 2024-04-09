@@ -58,3 +58,32 @@ python3 -m venv venv && source venv/bin/activate && pip install -r requirements.
 ```bash
 python3 -m jupyter notebook notebooks/getting-started.ipynb
 ```
+
+## Code quality and style
+
+The repository has a little CI/CD line that will run tests (see common/test_example). There's also a linter to ensure we follow the pep8 style guide. This will not be the case for notebooks. If your push or merge request blocked by the [workflow](https://github.com/Expan75/team20-adverserial-artists/actions) you'll see red.
+
+### Passing the lint check
+
+```bash
+# lint and get notified of any lines that conflict with ruleset
+python3 -m flake8 common/
+
+# in most cases you can just run the autoformatter to have things taken care of
+python3 -m black common/
+```
+
+### Passing the test check
+
+```bash
+# run all tests
+python3 -m pytest
+
+# alternatively run a test by matching the test function name(s)
+python3 -m pytest -k test_very_specific_name
+
+# you can also invert these patterns by adding "not" in front
+python3 -m pytest -k not e2e
+```
+
+Once your test pass locally, you can commit and push the updated version which should now clear the CI/CD pipeline.
