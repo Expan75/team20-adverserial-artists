@@ -1,8 +1,6 @@
-flake8
-pytest
-numpy
-pandas
-matplotlib
-torch
-torchvision
-notebook
+numpy==1.24.1
+pandas==1.5.2
+torch==2.2.1
+torchdata==0.7.1
+torchtext==0.17.1
+torchvision==0.17.1
