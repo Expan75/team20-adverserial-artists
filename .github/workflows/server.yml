@@ -1,15 +1,36 @@
 name: "package-cicd"
 on: push
+runs-on: ubuntu-latest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+
+  install:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
+          cache: "pip"
+      - name: install
+        run: pip install -r requirements.txt
+
+  lint:
+    needs: install
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: "pip"
       - name: lint
-        run: pip install flake8 && python -m flake8 .
+        run: python -m flake8 .
 
   test:
     needs: lint
@@ -19,7 +40,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-      - run: pip install -r ./requirements.txt # install all our dependencies for the project
+          cache: "pip"
       - name: test
         run: >
           python -m pytest
