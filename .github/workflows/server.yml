@@ -2,15 +2,7 @@ name: "package-cicd"
 on: push
 runs-on: ubuntu-latest
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
-
 jobs:
-
   install:
     steps:
       - uses: actions/checkout@v4
