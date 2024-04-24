@@ -34,7 +34,7 @@ Note that data is not stored in the repository, use google drive to gain access 
 
 All info that should go into the report should be generated with notebooks and then exported to the main overleaf document.
 
-## Getting Started
+## Getting started with the models
 
 1. Clone the repository to your machine
 
@@ -53,7 +53,14 @@ git clone https://github.com/Expan75/team20-adverserial-artists
 python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 ```
 
-3. see notebooks/getting-started.ipynb
+3. Download a local copy of the mnist dataset
+
+```bash
+# you use provided script. Will download into ~/.keras/datasets/mnist
+python3 scripts/fetch_mnist.py -d mnist
+```
+
+4. see notebooks/getting-started.ipynb
 
 ```bash
 python3 -m jupyter notebook notebooks/getting-started.ipynb
