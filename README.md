@@ -55,34 +55,10 @@ python3 -m venv venv && source venv/bin/activate && pip install -r requirements.
 
 3. Download a local copy of the mnist dataset
 
-Pytorch and Keras dataset imports for MNIST seem to be broken at the moment. There's a script you can use to fetch it directly from the source:
-
 ```bash
-# ensure you can execute the script
-chmod +x scripts/fetch_mnist.sh
-
-# download
-./scripts/fetch_mnist.sh
+# you use provided script. Will download into ~/.keras/datasets/mnist
+python3 scripts/fetch_mnist.py -d mnist
 ```
-
-It's suprisingly hard to find a working mirror of the original mnist distribution. Using the pytorch or keras dataset module won't work, as it doesn't support the recently protected (behind cloudflare) yann.lecun domain. Workings links (split by training set) are:
-
-- http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-- t10k-images-idx3-ubyte.gz: test set images (1648877 bytes)
-  t10k-labels-idx1-ubyte.gz: test set labels (4542 bytes)
-  Easiest is to download via the termin:
-
-You can use
-
-```bash
-for source
-
-
-BASE_PATH = http://yann.lecun.com/exdb/mnist/
-train-images-idx3-ubyte.gz
-```
-
-It's recommeded to store the data outside of the repository so the size doesn't baloon. Keras will default to downloading things into "~/.keras/datasets/mnist.npz".
 
 4. see notebooks/getting-started.ipynb
 
